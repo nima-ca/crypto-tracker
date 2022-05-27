@@ -11,7 +11,8 @@
   margin-bottom: 3rem;
   transition: all 0.3s;
 }
+
 .container > h1:hover {
-  color: var(--color-hover);
+  color: var(--color-secondary);
   transform: scale(1.2);
 }

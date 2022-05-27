@@ -10,6 +10,11 @@
   border-radius: 2rem;
   border: 2px solid var(--color-black);
   margin-bottom: 2rem;
+  transition: all 0.3s;
+}
+
+.card:hover {
+  border: 2px solid var(--color-secondary);
 }
 
 .icon {
