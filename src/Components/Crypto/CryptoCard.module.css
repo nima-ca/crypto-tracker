@@ -1,0 +1,19 @@
+.card {
+  cursor: pointer;
+  width: 80rem;
+  height: 8rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 2rem;
+  border-radius: 2rem;
+  border: 2px solid var(--color-black);
+  margin-bottom: 2rem;
+}
+
+.card > div {
+  display: flex;
+}
+.card > div:first-child {
+  margin-right: 1rem;
+}
