@@ -56,7 +56,7 @@ const Crypto = () => {
   return (
     <div className={styles.container}>
       <h1>Crypto-Tracker</h1>
-      <Heading />
+      <Heading page={page} />
       {isLoading && !hasError && <LoadingSpinner />}
       {hasError && <p>{`${errorMessage} 😢😭`}</p>}
       {!isLoading && !hasError && CryptoCardList}
