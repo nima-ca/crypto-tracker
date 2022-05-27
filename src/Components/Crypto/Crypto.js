@@ -7,13 +7,18 @@ import Pagination from "../UI/Pagination";
 
 const apiKey = process.env.REACT_APP_API_KEY;
 
-const apiAddress = `https://api.nomics.com/v1/currencies/ticker?key=${apiKey}&interval=1d&per-page=10&page=1`;
-
 const Crypto = () => {
+  const [page, setPage] = useState(1);
+  const apiAddress = `https://api.nomics.com/v1/currencies/ticker?key=${apiKey}&interval=1d&per-page=10&page=${page}`;
+
   const [cryptoData, setCryptoData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
+  const pageHandler = (pageNumber) => {
+    setPage(pageNumber);
+  };
 
   useEffect(() => {
     fetch(apiAddress)
@@ -34,7 +39,7 @@ const Crypto = () => {
       .catch((error) => {
         setErrorMessage(error.message);
       });
-  }, []);
+  }, [apiAddress]);
   console.log(cryptoData);
 
   const CryptoCardList = cryptoData.map((crypto) => (
@@ -55,7 +60,11 @@ const Crypto = () => {
       {isLoading && !hasError && <LoadingSpinner />}
       {hasError && <p>{`${errorMessage} 😢😭`}</p>}
       {!isLoading && !hasError && CryptoCardList}
-      <Pagination />
+      <Pagination
+        page={page}
+        pageHandler={pageHandler}
+        setIsLoading={setIsLoading}
+      />
     </div>
   );
 };
