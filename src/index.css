@@ -1,10 +1,18 @@
 :root {
-  --color-dark-primary: #15133c;
+  --color-primary: #15133c;
   --color-secondary: #ec994b;
+  --color-font: #000;
+  --color-background: #fef9ff;
   --color-white: #fef9ff;
   --color-black: #000;
   --color-green: #00a852;
   --color-red: #ff5252;
+}
+
+[data-theme="dark"] {
+  --color-font: #fef9ff;
+  --color-background: #15133c;
+  --color-secondary: #ec994b;
 }
 
 *,
@@ -21,9 +29,10 @@ html {
 
 body {
   min-height: 100vh;
-  background-color: var(--color-light-primary);
   font-size: 1.6rem;
   font-weight: 400;
+  background-color: var(--color-background);
+  color: var(--color-font);
   font-family: "Lato", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

@@ -1,5 +1,4 @@
 import styles from "./Pagination.module.css";
-import React, { useState } from "react";
 
 const Pagination = ({ page, pageHandler, setIsLoading }) => {
   console.log(page);
