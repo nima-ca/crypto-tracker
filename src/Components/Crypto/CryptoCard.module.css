@@ -6,7 +6,7 @@
   justify-content: space-between;
   padding: 0 3rem;
   align-items: center;
-  font-size: 2rem;
+  font-size: 1.8rem;
   border-radius: 2rem;
   border: 2px solid var(--color-black);
   margin-bottom: 2rem;
@@ -20,8 +20,8 @@
   width: 15%;
 }
 .icon > img {
-  max-width: 4rem;
-  max-height: 4rem;
+  max-width: 3.5rem;
+  max-height: 3.5rem;
 }
 
 .name {

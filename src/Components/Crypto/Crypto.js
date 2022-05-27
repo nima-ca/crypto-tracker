@@ -1,6 +1,7 @@
-import CryptoCard from "./CryptoCard";
-import styles from "./Crypto.module.css";
 import { useEffect, useState } from "react";
+import styles from "./Crypto.module.css";
+import CryptoCard from "./CryptoCard";
+import LoadingSpinner from "../UI/LoadingSpinner";
 
 const apiKey = process.env.REACT_APP_API_KEY;
 
@@ -33,19 +34,23 @@ const Crypto = () => {
   }, []);
   console.log(cryptoData);
 
+  const CryptoCardList = cryptoData.map((crypto) => (
+    <CryptoCard
+      key={crypto.id}
+      name={crypto.name}
+      id={crypto.id}
+      img={crypto["logo_url"]}
+      price={crypto.price}
+      dailyChange={crypto["1d"]["price_change_pct"]}
+    />
+  ));
+
   return (
     <div className={styles.container}>
       <h1>Crypto-Tracker</h1>
-      {cryptoData.map((crypto) => (
-        <CryptoCard
-          key={crypto.id}
-          name={crypto.name}
-          id={crypto.id}
-          img={crypto["logo_url"]}
-          price={crypto.price}
-          dailyChange={crypto["1d"]["price_change_pct"]}
-        />
-      ))}
+      {isLoading && !hasError && <LoadingSpinner />}
+      {hasError && <p>Something went wrong</p>}
+      {!isLoading && !hasError && CryptoCardList}
     </div>
   );
 };
