@@ -1,12 +1,8 @@
 import styles from "./ThemeToggleSwitch.module.css";
 
 const ThemeToggleSwitch = () => {
-  // 1
   const setDark = () => {
-    // 2
     localStorage.setItem("theme", "dark");
-
-    // 3
     document.documentElement.setAttribute("data-theme", "dark");
   };
 
@@ -15,7 +11,6 @@ const ThemeToggleSwitch = () => {
     document.documentElement.setAttribute("data-theme", "light");
   };
 
-  // 4
   const storedTheme = localStorage.getItem("theme");
 
   const prefersDark =
@@ -29,9 +24,8 @@ const ThemeToggleSwitch = () => {
     setDark();
   }
 
-  // 5
-  const toggleTheme = (e) => {
-    if (e.target.checked) {
+  const toggleTheme = (event) => {
+    if (event.target.checked) {
       setDark();
     } else {
       setLight();
