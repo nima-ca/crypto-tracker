@@ -13,7 +13,7 @@ const CryptoCard = ({ id, name, price, img, dailyChange }) => {
         <p>{name}</p>
       </div>
       <div className={styles.price}>
-        <p>{`Price: ${price}$`}</p>
+        <p>{`${price}$`}</p>
         <p className={dailyChangeClass}>{`${dailyChange}%`}</p>
       </div>
     </div>

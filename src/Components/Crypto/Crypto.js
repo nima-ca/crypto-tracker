@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./Crypto.module.css";
 import CryptoCard from "./CryptoCard";
 import LoadingSpinner from "../UI/LoadingSpinner";
+import Heading from "../UI/Heading";
 
 const apiKey = process.env.REACT_APP_API_KEY;
 
@@ -49,6 +50,7 @@ const Crypto = () => {
   return (
     <div className={styles.container}>
       <h1>Crypto-Tracker</h1>
+      <Heading />
       {isLoading && !hasError && <LoadingSpinner />}
       {hasError && <p>{`${errorMessage} 😢😭`}</p>}
       {!isLoading && !hasError && CryptoCardList}

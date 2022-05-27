@@ -1,26 +1,18 @@
-.card {
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 80rem;
   height: 8rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
   padding: 0 3rem;
   font-size: 1.8rem;
-  border-radius: 2rem;
-  border: 2px solid var(--color-black);
-  margin-bottom: 2rem;
 }
 
-.icon {
+.symbol {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  margin-left: 1.5rem;
   width: 15%;
-}
-.icon > img {
-  max-width: 3.5rem;
-  max-height: 3.5rem;
 }
 
 .name {
@@ -35,12 +27,4 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.positive {
-  color: var(--color-green);
-}
-
-.negative {
-  color: var(--color-red);
 }
