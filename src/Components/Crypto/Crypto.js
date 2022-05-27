@@ -58,7 +58,7 @@ const Crypto = () => {
       <h1>Crypto-Tracker</h1>
       <Heading page={page} />
       {isLoading && !hasError && <LoadingSpinner />}
-      {hasError && <p>{`${errorMessage} 😢😭`}</p>}
+      {hasError && <p className={styles.error}>{`${errorMessage} 😢😭`}</p>}
       {!isLoading && !hasError && CryptoCardList}
       <Pagination
         page={page}

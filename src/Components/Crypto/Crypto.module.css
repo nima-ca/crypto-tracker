@@ -16,3 +16,9 @@
   color: var(--color-secondary);
   transform: scale(1.2);
 }
+
+.error {
+  color: var(--color-red);
+  font-size: 2rem;
+  margin-top: 2rem;
+}
