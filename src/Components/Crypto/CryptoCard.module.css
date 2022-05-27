@@ -3,7 +3,8 @@
   width: 80rem;
   height: 8rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 0 3rem;
   align-items: center;
   font-size: 2rem;
   border-radius: 2rem;
@@ -11,9 +12,36 @@
   margin-bottom: 2rem;
 }
 
-.card > div {
+.icon {
+  position: relative;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 15%;
 }
-.card > div:first-child {
-  margin-right: 1rem;
+.icon > img {
+  max-width: 4rem;
+  max-height: 4rem;
+}
+
+.name {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.price {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.positive {
+  color: var(--color-green);
+}
+
+.negative {
+  color: var(--color-red);
 }

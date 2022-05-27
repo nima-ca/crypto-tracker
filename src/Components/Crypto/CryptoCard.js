@@ -1,14 +1,21 @@
 import styles from "./CryptoCard.module.css";
 
-const CryptoCard = ({ currency, name, price, img }) => {
+const CryptoCard = ({ id, name, price, img, dailyChange }) => {
+  const dailyChangeClass = dailyChange > 0 ? styles.positive : styles.negative;
+
   return (
     <div className={styles.card}>
-      <div>
+      <div className={styles.icon}>
         <img src={img} alt="" />
-        <p>btc</p>
+        <p>{id}</p>
       </div>
-      <p>bitcoin</p>
-      <p>{`Price: ${123}$`}</p>
+      <div className={styles.name}>
+        <p>{name}</p>
+      </div>
+      <div className={styles.price}>
+        <p>{`Price: ${price}$`}</p>
+        <p className={dailyChangeClass}>{`${dailyChange}%`}</p>
+      </div>
     </div>
   );
 };
