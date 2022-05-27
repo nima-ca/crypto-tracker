@@ -3,6 +3,7 @@ import styles from "./Crypto.module.css";
 import CryptoCard from "./CryptoCard";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import Heading from "../UI/Heading";
+import Pagination from "../UI/Pagination";
 
 const apiKey = process.env.REACT_APP_API_KEY;
 
@@ -54,6 +55,7 @@ const Crypto = () => {
       {isLoading && !hasError && <LoadingSpinner />}
       {hasError && <p>{`${errorMessage} 😢😭`}</p>}
       {!isLoading && !hasError && CryptoCardList}
+      <Pagination />
     </div>
   );
 };

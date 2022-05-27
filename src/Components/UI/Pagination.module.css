@@ -1,0 +1,21 @@
+.pagination {
+  display: flex;
+  margin-bottom: 10rem;
+}
+
+.pagination > p {
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.pagination > p:hover {
+  color: var(--color-hover);
+  transform: translateY(-5px);
+}
+.pagination > p:active {
+  color: var(--color-hover);
+  transform: translateY(0);
+}
+
+.pagination > p:first-child {
+  margin-right: 3rem;
+}
