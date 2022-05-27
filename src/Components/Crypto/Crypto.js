@@ -11,6 +11,7 @@ const Crypto = () => {
   const [cryptoData, setCryptoData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     fetch(apiAddress)
@@ -29,7 +30,7 @@ const Crypto = () => {
         setCryptoData(data);
       })
       .catch((error) => {
-        console.log(error);
+        setErrorMessage(error.message);
       });
   }, []);
   console.log(cryptoData);
@@ -49,7 +50,7 @@ const Crypto = () => {
     <div className={styles.container}>
       <h1>Crypto-Tracker</h1>
       {isLoading && !hasError && <LoadingSpinner />}
-      {hasError && <p>Something went wrong</p>}
+      {hasError && <p>{`${errorMessage} 😢😭`}</p>}
       {!isLoading && !hasError && CryptoCardList}
     </div>
   );
