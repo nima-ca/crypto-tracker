@@ -4,6 +4,7 @@ import CryptoCard from "./CryptoCard";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import Heading from "../UI/Heading";
 import Pagination from "../UI/Pagination";
+import { Link, Outlet } from "react-router-dom";
 
 const apiKey = process.env.REACT_APP_API_KEY;
 
@@ -43,19 +44,24 @@ const Crypto = () => {
   console.log(cryptoData);
 
   const CryptoCardList = cryptoData.map((crypto) => (
-    <CryptoCard
+    <Link
+      style={{ textDecoration: "none" }}
+      to={`/${crypto.symbol}`}
       key={crypto.id}
-      name={crypto.name}
-      id={crypto.id}
-      img={crypto["logo_url"]}
-      price={crypto.price}
-      dailyChange={crypto["1d"]["price_change_pct"]}
-    />
+    >
+      <CryptoCard
+        key={crypto.id}
+        name={crypto.name}
+        id={crypto.id}
+        img={crypto["logo_url"]}
+        price={crypto.price}
+        dailyChange={crypto["1d"]["price_change_pct"]}
+      />
+    </Link>
   ));
 
   return (
     <div className={styles.container}>
-      <h1>Crypto-Tracker</h1>
       <Heading page={page} />
       {isLoading && !hasError && <LoadingSpinner />}
       {hasError && <p className={styles.error}>{`${errorMessage} 😢😭`}</p>}
