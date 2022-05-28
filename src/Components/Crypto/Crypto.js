@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import styles from "./Crypto.module.css";
 import CryptoCard from "./CryptoCard";
 import LoadingSpinner from "../UI/LoadingSpinner";
+import Error from "../UI/Error";
 import Heading from "../UI/Heading";
 import Pagination from "../UI/Pagination";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const apiKey = process.env.REACT_APP_API_KEY;
 
@@ -26,7 +27,7 @@ const Crypto = () => {
       .then((response) => {
         if (!response.ok) {
           setHasError(true);
-          throw new Error(
+          setErrorMessage(
             `This is an HTTP error: The status is ${response.status}`
           );
         }
@@ -36,9 +37,6 @@ const Crypto = () => {
         setHasError(false);
         setIsLoading(false);
         setCryptoData(data);
-      })
-      .catch((error) => {
-        setErrorMessage(error.message);
       });
   }, [apiAddress]);
   console.log(cryptoData);
@@ -64,7 +62,7 @@ const Crypto = () => {
     <div className={styles.container}>
       <Heading page={page} />
       {isLoading && !hasError && <LoadingSpinner />}
-      {hasError && <p className={styles.error}>{`${errorMessage} 😢😭`}</p>}
+      {hasError && <Error error={errorMessage} />}
       {!isLoading && !hasError && CryptoCardList}
       <Pagination
         page={page}
