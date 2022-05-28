@@ -3,6 +3,7 @@ import ThemeToggleSwitch from "./Components/UI/ThemeToggleSwitch";
 import CryptoItem from "./Routes/CryptoItem";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
+import NotFound from "./Components/UI/NotFound";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Crypto />} />
           <Route path="/:id" element={<CryptoItem />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </BrowserRouter>
