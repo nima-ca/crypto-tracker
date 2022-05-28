@@ -17,8 +17,8 @@ const Pagination = ({ page, pageHandler, setIsLoading }) => {
 
   return (
     <div className={styles.pagination}>
-      <button onClick={decreasePageNumber}>Previous</button>
-      <button onClick={increasePageNumber}>Next</button>
+      <button onClick={decreasePageNumber}>&larr; Previous</button>
+      <button onClick={increasePageNumber}>Next &rarr;</button>
     </div>
   );
 };

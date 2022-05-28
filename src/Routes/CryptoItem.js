@@ -53,6 +53,7 @@ const CryptoItem = () => {
 
       return (
         <div className={styles.container}>
+          <h2 className={styles.name}>{data.name}</h2>
           <div className={styles.card}>
             <div className={styles.icon}>
               <img src={data["logo_url"]} alt="" />

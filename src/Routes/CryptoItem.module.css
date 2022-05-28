@@ -1,10 +1,15 @@
-.card {
-  width: 80rem;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 90%;
+}
+.card {
+  width: 100%;
   height: 20rem;
   display: flex;
   justify-content: space-between;
@@ -30,6 +35,22 @@
 .icon > img {
   max-height: 5rem;
   margin-right: 1.5rem;
+}
+
+.name {
+  display: inline-block;
+  font-size: 4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  line-height: 1.2em;
+  color: #0000;
+  text-shadow: 0 0 var(--color-font), 0 1.2em var(--color-secondary);
+  overflow: hidden;
+  transition: 0.3s;
+}
+.name:hover {
+  text-shadow: 0 -1.2em var(--color-font), 0 0 var(--color-secondary);
 }
 
 .positive {
