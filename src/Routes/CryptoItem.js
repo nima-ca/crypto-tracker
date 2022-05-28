@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import styles from "./CryptoItem.module.css";
 import LoadingSpinner from "../Components/UI/LoadingSpinner";
 import Error from "../Components/UI/Error";
+import NotFound from "../Components/UI/NotFound";
 
 const apiKey = process.env.REACT_APP_API_KEY;
 
@@ -37,33 +38,37 @@ const CryptoItem = () => {
   console.log(data);
 
   const CryptoTemplate = () => {
-    const dailyChange = data["1d"]["price_change_pct"];
-    const dailyChangeClass =
-      dailyChange > 0 ? styles.positive : styles.negative;
+    if (data["1d"] !== undefined) {
+      const dailyChange = data["1d"]["price_change_pct"];
+      const dailyChangeClass =
+        dailyChange > 0 ? styles.positive : styles.negative;
 
-    const weeklyChange = data["7d"]["price_change_pct"];
-    const weeklyChangeClass =
-      weeklyChange > 0 ? styles.positive : styles.negative;
+      const weeklyChange = data["7d"]["price_change_pct"];
+      const weeklyChangeClass =
+        weeklyChange > 0 ? styles.positive : styles.negative;
 
-    const monthlyChange = data["30d"]["price_change_pct"];
-    const monthlyChangeClass =
-      monthlyChange > 0 ? styles.positive : styles.negative;
+      const monthlyChange = data["30d"]["price_change_pct"];
+      const monthlyChangeClass =
+        monthlyChange > 0 ? styles.positive : styles.negative;
 
-    return (
-      <div className={styles.container}>
-        <div className={styles.card}>
-          <div className={styles.icon}>
-            <img src={data["logo_url"]} alt="" />
-            <h2>{id}</h2>
+      return (
+        <div className={styles.container}>
+          <div className={styles.card}>
+            <div className={styles.icon}>
+              <img src={data["logo_url"]} alt="" />
+              <h2>{id}</h2>
+            </div>
+            <p>{`Rank: ${data.rank}`}</p>
+            <p>{`Price: ${data.price}$`}</p>
+            <p className={dailyChangeClass}>{`24h: ${dailyChange}%`}</p>
+            <p className={weeklyChangeClass}>{`7d: ${weeklyChange}%`}</p>
+            <p className={monthlyChangeClass}>{`30d: ${monthlyChange}%`}</p>
           </div>
-          <p>{`Rank: ${data.rank}`}</p>
-          <p>{`Price: ${data.price}$`}</p>
-          <p className={dailyChangeClass}>{`24h: ${dailyChange}%`}</p>
-          <p className={weeklyChangeClass}>{`7d: ${weeklyChange}%`}</p>
-          <p className={monthlyChangeClass}>{`30d: ${monthlyChange}%`}</p>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return <NotFound />;
+    }
   };
   return (
     <>
